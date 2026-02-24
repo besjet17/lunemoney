@@ -35,7 +35,7 @@ const Navbar = () => (
     </div>
     <div className="nav-links">
       <a href="#privacy">Privacy</a>
-      <a href="#import">Import from Sheets</a>
+      <a href="#import">Data Import</a>
       <a href="#net-worth">Asset Tracking</a>
       <a href="#taxes">Cash Out Value</a>
       <a href="#projections">Simulations</a>
@@ -76,7 +76,7 @@ const FeatureSection = ({ id, tag, title, description, image, reversed, imageCen
   </section>
 );
 
-const ADMIN_EMAIL = 'admin@lunemoney.com'; // TODO: Update with your preferred contact email
+const ADMIN_EMAIL = 'access-request@lunemoney.com'; 
 
 function App() {
   const [formData, setFormData] = useState({ name: '', message: '' });
@@ -95,7 +95,7 @@ function App() {
       <FeatureSection
         id="privacy"
         tag="Privacy First"
-        title={<>Your Money, <span className="highlight">Your Infrastructure.</span></>}
+        title={<>Your Money, <span className="highlight">Your Data.</span></>}
         description={
           <>
             Lune Money is <strong>100% self-hosted</strong>. Other apps store your sensitive financial data on their servers around the world, Lune Money runs entirely on your computer.
@@ -111,8 +111,8 @@ function App() {
           </div>
           <div>
             <div style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><Lock size={24} /></div>
-            <h4 style={{ margin: '0 0 0.5rem' }}>Open Source</h4>
-            <p style={{ fontSize: '0.9rem', margin: 0 }}>Transparent codebase. Verify every line of code to ensure your privacy is never compromised.</p>
+            <h4 style={{ margin: '0 0 0.5rem' }}>Your code</h4>
+            <p style={{ fontSize: '0.9rem', margin: 0 }}>All the code runs on your computer. No cloud services.</p>
           </div>
         </div>
         <div style={{ marginTop: '3rem' }}>
