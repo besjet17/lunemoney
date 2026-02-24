@@ -13,12 +13,16 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './index.css';
+import logoImg from './assets/logo.png';
 import heroImg from './assets/hero.png';
 import privacyImg from './assets/privacy.png';
 
 const Navbar = () => (
   <nav className="navbar">
-    <div className="logo">LUNE CAPITAL</div>
+    <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <img src={logoImg} alt="Lune Money Logo" style={{ height: '32px', width: 'auto' }} />
+      <span>LUNE MONEY</span>
+    </div>
     <div className="nav-links">
       <a href="#features">Features</a>
       <a href="#privacy">Data Privacy</a>
@@ -79,7 +83,7 @@ function App() {
               Get Started for Free
             </button>
             <button
-              onClick={() => window.open('https://github.com/besjet17/LuneCapital', '_blank')}
+              onClick={() => window.open('https://github.com/besjet17/LuneMoney', '_blank')}
               style={{
                 background: 'transparent',
                 color: 'white',
@@ -158,8 +162,8 @@ function App() {
             <span className="section-tag">Privacy First</span>
             <h2>Your Data. <span className="highlight">Your Infrastructure.</span></h2>
             <p>
-              Lune Capital is the only financial tracking platform designed to be <strong>100% self-hosted</strong>.
-              While other apps store your sensitive financial history on their servers, Lune Capital runs entirely
+              Lune Money is the only financial tracking platform designed to be <strong>100% self-hosted</strong>.
+              While other apps store your sensitive financial history on their servers, Lune Money runs entirely
               on your own hardware.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
@@ -190,7 +194,7 @@ function App() {
 
       <section id="request-access" className="request-access">
         <h2>Ready to take control?</h2>
-        <p>Request an invite to start self-hosting Lune Capital today.</p>
+        <p>Request an invite to start self-hosting Lune Money today.</p>
 
         <form className="access-form" onSubmit={handleRequestAccess}>
           <div className="form-group">
@@ -207,7 +211,7 @@ function App() {
             <label>Message</label>
             <textarea
               rows="4"
-              placeholder="Tell us about your setup and why you're interested in Lune Capital..."
+              placeholder="Tell us about your setup and why you're interested in Lune Money..."
               required
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -220,7 +224,7 @@ function App() {
       </section>
 
       <footer className="footer">
-        <p>&copy; 2026 Lune Capital. All rights reserved.</p>
+        <p>&copy; 2026 Lune Money. All rights reserved.</p>
         <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center', gap: '2rem' }}>
           <a href="#" style={{ color: 'var(--text-dim)', textDecoration: 'none' }}>Privacy Policy</a>
           <a href="#" style={{ color: 'var(--text-dim)', textDecoration: 'none' }}>Terms of Service</a>
