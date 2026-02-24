@@ -44,6 +44,8 @@ const FeatureCard = ({ icon: Icon, title, description, highlight }) => (
   </motion.div>
 );
 
+const ADMIN_EMAIL = 'admin@lunemoney.com'; // TODO: Update with your preferred contact email
+
 function App() {
   const [formData, setFormData] = useState({ name: '', message: '' });
 
@@ -51,7 +53,7 @@ function App() {
     e.preventDefault();
     const subject = encodeURIComponent(`Access Request from ${formData.name}`);
     const body = encodeURIComponent(formData.message);
-    window.location.href = `mailto:jeff.levinson@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`;
   };
 
   return (
