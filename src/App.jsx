@@ -13,22 +13,19 @@ import {
   Zap,
   Download,
   PieChart,
-  BarChart,
-  Bot
+  BarChart
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './index.css';
 import logoImg from './assets/logo.png';
-import heroImg from './assets/hero.png';
+import aggregatorsImg from './assets/aggregators.png';
+import googleSheetsImg from './assets/google_sheets.png';
+import taxesImg from './assets/taxes.png';
+import simulationsImg from './assets/simulations.png';
+import reportingImg from './assets/reporting.png';
+import equityImg from './assets/equity.png';
 // Placeholder images for feature sections
 const privacyImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Privacy+First";
-const aggregatorsImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Aggregator+Integrations";
-const googleSheetsImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Google+Sheets+CSV";
-const equityImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Equity+and+RSUs";
-const taxesImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Smart+Tax+Calculations";
-const simulationsImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=What-if+Simulations";
-const aiAdvisorImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=AI+Financial+Advisor";
-const reportingImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Rich+Reporting";
 
 const Navbar = () => (
   <nav className="navbar">
@@ -43,7 +40,6 @@ const Navbar = () => (
       <a href="#net-worth">Net Worth</a>
       <a href="#taxes">Taxes</a>
       <a href="#projections">Projections</a>
-      <a href="#ai-advisor">AI Advisor</a>
       <a href="#reporting">Reporting</a>
       <button className="btn-primary" onClick={() => window.location.href = '#request-access'}>Request Access</button>
     </div>
@@ -96,66 +92,42 @@ function App() {
     <div className="landing-container">
       <Navbar />
 
-      <header className="hero">
-        <motion.div
-          className="hero-content"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1>Your Finances, <span className="highlight">Your Data.</span></h1>
-          <p>
-            The private platform for tracking your money.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <button className="btn-primary"
-              style={{ padding: '0.8rem 2rem', fontSize: '1rem' }}
-              onClick={() => window.location.href = '#request-access'}
-            >
-              Get Started for Free
-            </button>
+      <FeatureSection
+        id="privacy"
+        tag="Privacy First"
+        title={<>Your Money, <span className="highlight">Your Infrastructure.</span></>}
+        description={
+          <>
+            Lune Money is the only financial tracking platform designed to be <strong>100% self-hosted</strong>.
+            While other apps store your sensitive financial history on their servers, Lune Money runs entirely
+            on your own hardware.
+          </>
+        }
+        image={privacyImg}
+      >
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '2rem' }}>
+          <div>
+            <div style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><Server size={24} /></div>
+            <h4 style={{ margin: '0 0 0.5rem' }}>No External Servers</h4>
+            <p style={{ fontSize: '0.9rem', margin: 0 }}>Your data never leaves your home network. Complete isolation from data breaches.</p>
           </div>
-        </motion.div>
-
-        <motion.div
-          className="hero-visual"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <div className="hero-image-container">
-            <img src={heroImg} alt="Financial Data Visualization" />
+          <div>
+            <div style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><Lock size={24} /></div>
+            <h4 style={{ margin: '0 0 0.5rem' }}>Open Source</h4>
+            <p style={{ fontSize: '0.9rem', margin: 0 }}>Transparent codebase. Verify every line of code to ensure your privacy is never compromised.</p>
           </div>
-        </motion.div>
-      </header>
+        </div>
+        <div style={{ marginTop: '3rem' }}>
+          <button className="btn-primary"
+            style={{ padding: '0.8rem 2rem', fontSize: '1rem' }}
+            onClick={() => window.location.href = '#request-access'}
+          >
+            Get Started for Free
+          </button>
+        </div>
+      </FeatureSection>
 
       <section id="features">
-        <FeatureSection
-          id="privacy"
-          tag="Privacy First"
-          title={<>Your Data. <span className="highlight">Your Infrastructure.</span></>}
-          description={
-            <>
-              Lune Money is the only financial tracking platform designed to be <strong>100% self-hosted</strong>.
-              While other apps store your sensitive financial history on their servers, Lune Money runs entirely
-              on your own hardware.
-            </>
-          }
-          image={privacyImg}
-        >
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '2rem' }}>
-            <div>
-              <div style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><Server size={24} /></div>
-              <h4 style={{ margin: '0 0 0.5rem' }}>No External Servers</h4>
-              <p style={{ fontSize: '0.9rem', margin: 0 }}>Your data never leaves your home network. Complete isolation from data breaches.</p>
-            </div>
-            <div>
-              <div style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><Lock size={24} /></div>
-              <h4 style={{ margin: '0 0 0.5rem' }}>Open Source</h4>
-              <p style={{ fontSize: '0.9rem', margin: 0 }}>Transparent codebase. Verify every line of code to ensure your privacy is never compromised.</p>
-            </div>
-          </div>
-        </FeatureSection>
 
         <FeatureSection
           id="integrations"
@@ -170,7 +142,7 @@ function App() {
           id="import"
           tag="Import"
           title="Import with Ease."
-          description="Prefer spreadsheets? Import your data via CSV or sync directly with Google Sheets. Total flexibility for your financial history."
+          description="All your data is in spreadsheets? Import your historical data with Google Sheets. Lune Money will automatically recreate your categories. Total flexibility for your financial history."
           image={googleSheetsImg}
         />
 
@@ -178,7 +150,7 @@ function App() {
           id="net-worth"
           tag="Net Worth"
           title="Manage Every Asset."
-          description="Track RSUs, stock options, and private equity alongside your liquid assets. Get a complete picture of your total net worth."
+          description="Track private equity and custom assets, alongside your liquid assets for a complete picture of your total net worth."
           image={equityImg}
           reversed
         />
@@ -195,24 +167,17 @@ function App() {
           id="projections"
           tag="Projections"
           title="Visualize Every Scenario."
-          description="Model complex 'what-if' scenarios. See how a house purchase, career change, or market downturn affects your long-term success."
+          description="Model your future finances. See how a house purchase, long term care insurance, social security, inheritance, or a career change will affect your net worth"
           image={simulationsImg}
           reversed
         />
 
-        <FeatureSection
-          id="ai-advisor"
-          tag="AI Advisor"
-          title="Your Personal CFO."
-          description="Get proactive insights and recommendations based on your actual data. Optimize spending, identify savings, and grow your wealth faster."
-          image={aiAdvisorImg}
-        />
 
         <FeatureSection
           id="reporting"
           tag="Reporting"
           title="Deep Insights."
-          description="Beautiful, interactive reports for income, expenses, and cash flow. Drill down into every transaction and see where your money goes."
+          description="Beautiful, interactive reports for cash flow. Drill down into transactions by label, owner, category, amount etc and see where your money goes."
           image={reportingImg}
           reversed
         />
