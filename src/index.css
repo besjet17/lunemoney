@@ -283,6 +283,7 @@ body {
 
 .feature-image-container {
   width: 100%;
+  aspect-ratio: 3 / 2;
   border-radius: 1.5rem;
   overflow: hidden;
   border: 1px solid var(--glass-border);
@@ -293,8 +294,15 @@ body {
 
 .feature-image-container img {
   width: 100%;
+  height: 100%;
   display: block;
+  object-fit: cover;
+  object-position: top left;
   border-radius: 0.75rem;
+}
+
+.feature-image-container.centered-image img {
+  object-position: center center;
 }
 
 @media (max-width: 1024px) {

@@ -24,8 +24,8 @@ import taxesImg from './assets/taxes.png';
 import simulationsImg from './assets/simulations.png';
 import reportingImg from './assets/reporting.png';
 import equityImg from './assets/equity.png';
-// Placeholder images for feature sections
-const privacyImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Privacy+First";
+import privacyImg from './assets/privacy.jpg';
+
 
 const Navbar = () => (
   <nav className="navbar">
@@ -46,7 +46,7 @@ const Navbar = () => (
   </nav>
 );
 
-const FeatureSection = ({ id, tag, title, description, image, reversed, children }) => (
+const FeatureSection = ({ id, tag, title, description, image, reversed, imageCentered, children }) => (
   <section id={id} className="feature-section">
     <div className={`feature-content ${reversed ? 'reversed' : ''}`}>
       <motion.div
@@ -68,7 +68,7 @@ const FeatureSection = ({ id, tag, title, description, image, reversed, children
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
       >
-        <div className="feature-image-container">
+        <div className={`feature-image-container ${imageCentered ? 'centered-image' : ''}`}>
           <img src={image} alt={title} />
         </div>
       </motion.div>
@@ -127,62 +127,58 @@ function App() {
         </div>
       </FeatureSection>
 
-      <section id="features">
+      <FeatureSection
+        id="import"
+        tag="Import"
+        title="Import with Ease."
+        description="All your data is in spreadsheets? Import your historical data with Google Sheets. Lune Money will automatically recreate your categories. Total flexibility for your financial history."
+        image={googleSheetsImg}
+      />
 
-        <FeatureSection
-          id="integrations"
-          tag="Integrations"
-          title="12,000+ Financial Institutions."
-          description="Connect all your accounts in one place. Secure, real-time sync with Plaid, Yodlee, and Mastercard."
-          image={aggregatorsImg}
-          reversed
-        />
+      <FeatureSection
+        id="net-worth"
+        tag="Net Worth"
+        title="Manage Every Asset."
+        description="Track private equity and custom assets, alongside your liquid assets for a complete picture of your total net worth."
+        image={equityImg}
+        reversed
+      />
 
-        <FeatureSection
-          id="import"
-          tag="Import"
-          title="Import with Ease."
-          description="All your data is in spreadsheets? Import your historical data with Google Sheets. Lune Money will automatically recreate your categories. Total flexibility for your financial history."
-          image={googleSheetsImg}
-        />
+      <FeatureSection
+        id="taxes"
+        tag="Tax Planning"
+        title="Plan for the Future."
+        description="Smart tax estimation helps you understand your liability before you sell. Optimize for long-term gains and minimize surprises."
+        image={taxesImg}
+      />
 
-        <FeatureSection
-          id="net-worth"
-          tag="Net Worth"
-          title="Manage Every Asset."
-          description="Track private equity and custom assets, alongside your liquid assets for a complete picture of your total net worth."
-          image={equityImg}
-          reversed
-        />
-
-        <FeatureSection
-          id="taxes"
-          tag="Tax Planning"
-          title="Plan for the Future."
-          description="Smart tax estimation helps you understand your liability before you sell. Optimize for long-term gains and minimize surprises."
-          image={taxesImg}
-        />
-
-        <FeatureSection
-          id="projections"
-          tag="Projections"
-          title="Visualize Every Scenario."
-          description="Model your future finances. See how a house purchase, long term care insurance, social security, inheritance, or a career change will affect your net worth"
-          image={simulationsImg}
-          reversed
-        />
+      <FeatureSection
+        id="projections"
+        tag="Projections"
+        title="Visualize Every Scenario."
+        description="Model your future finances. See how a house purchase, long term care insurance, social security, inheritance, or a career change will affect your net worth"
+        image={simulationsImg}
+        reversed
+      />
 
 
-        <FeatureSection
-          id="reporting"
-          tag="Reporting"
-          title="Deep Insights."
-          description="Beautiful, interactive reports for cash flow. Drill down into transactions by label, owner, category, amount etc and see where your money goes."
-          image={reportingImg}
-          reversed
-        />
-      </section>
+      <FeatureSection
+        id="reporting"
+        tag="Reporting"
+        title="Deep Insights."
+        description="Beautiful, interactive reports for cash flow. Drill down into transactions by label, owner, category, amount etc and see where your money goes."
+        image={reportingImg}
+      />
 
+      <FeatureSection
+        id="integrations"
+        tag="Integrations"
+        title="12,000+ Financial Institutions."
+        description="Connect all your accounts in one place. Secure, real-time sync with Plaid, Yodlee, and Mastercard."
+        image={aggregatorsImg}
+        imageCentered
+        reversed
+      />
       <section id="request-access" className="request-access">
         <h2>Ready to take control?</h2>
         <p>Request an invite to start self-hosting Lune Money today.</p>
