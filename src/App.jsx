@@ -35,12 +35,12 @@ const Navbar = () => (
     </div>
     <div className="nav-links">
       <a href="#privacy">Privacy</a>
-      <a href="#integrations">Integrations</a>
-      <a href="#import">Import</a>
-      <a href="#net-worth">Net Worth</a>
-      <a href="#taxes">Taxes</a>
-      <a href="#projections">Projections</a>
+      <a href="#import">Import from Sheets</a>
+      <a href="#net-worth">Asset Tracking</a>
+      <a href="#taxes">Cash Out Value</a>
+      <a href="#projections">Simulations</a>
       <a href="#reporting">Reporting</a>
+      <a href="#integrations">Aggregators</a>
       <button className="btn-primary" onClick={() => window.location.href = '#request-access'}>Request Access</button>
     </div>
   </nav>
@@ -98,14 +98,12 @@ function App() {
         title={<>Your Money, <span className="highlight">Your Infrastructure.</span></>}
         description={
           <>
-            Lune Money is the only financial tracking platform designed to be <strong>100% self-hosted</strong>.
-            While other apps store your sensitive financial history on their servers, Lune Money runs entirely
-            on your own hardware.
+            Lune Money is <strong>100% self-hosted</strong>. Other apps store your sensitive financial data on their servers around the world, Lune Money runs entirely on your computer.
           </>
         }
         image={privacyImg}
       >
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '2rem' }}>
+        <div className="privacy-features-grid">
           <div>
             <div style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><Server size={24} /></div>
             <h4 style={{ margin: '0 0 0.5rem' }}>No External Servers</h4>
@@ -126,6 +124,15 @@ function App() {
           </button>
         </div>
       </FeatureSection>
+
+      <FeatureSection
+        id="projections"
+        tag="Projections"
+        title="Visualize Every Scenario."
+        description="Model your future finances. See how a house purchase, long term care insurance, social security, inheritance, or a career change will affect your net worth"
+        image={simulationsImg}
+        reversed
+      />
 
       <FeatureSection
         id="import"
@@ -153,21 +160,12 @@ function App() {
       />
 
       <FeatureSection
-        id="projections"
-        tag="Projections"
-        title="Visualize Every Scenario."
-        description="Model your future finances. See how a house purchase, long term care insurance, social security, inheritance, or a career change will affect your net worth"
-        image={simulationsImg}
-        reversed
-      />
-
-
-      <FeatureSection
         id="reporting"
         tag="Reporting"
         title="Deep Insights."
         description="Beautiful, interactive reports for cash flow. Drill down into transactions by label, owner, category, amount etc and see where your money goes."
         image={reportingImg}
+        reversed
       />
 
       <FeatureSection
@@ -177,7 +175,6 @@ function App() {
         description="Connect all your accounts in one place. Secure, real-time sync with Plaid, Yodlee, and Mastercard."
         image={aggregatorsImg}
         imageCentered
-        reversed
       />
       <section id="request-access" className="request-access">
         <h2>Ready to take control?</h2>

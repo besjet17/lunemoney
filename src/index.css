@@ -387,6 +387,13 @@ body {
   font-size: 0.9rem;
 }
 
+.privacy-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 @media (max-width: 1024px) {
   .hero {
     flex-direction: column;
@@ -414,5 +421,27 @@ body {
 
   .nav-links {
     display: none;
+  }
+
+  .feature-section {
+    padding: 4rem 2rem;
+  }
+
+  .feature-text h2 {
+    font-size: 2rem;
+  }
+
+  .privacy-features-grid {
+    grid-template-columns: 1fr;
+    text-align: left;
+    gap: 1.5rem;
+  }
+
+  .request-access {
+    padding: 6rem 2rem;
+  }
+
+  .request-access h2 {
+    font-size: 2.5rem;
   }
 }
