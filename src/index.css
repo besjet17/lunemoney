@@ -235,14 +235,18 @@ body {
   transform: rotate(45deg);
 }
 
-.privacy-section {
+/* Feature Sections */
+.feature-section {
   padding: 8rem 4rem;
-  background: var(--bg-darker);
+  background: var(--bg-dark);
   border-top: 1px solid var(--glass-border);
-  border-bottom: 1px solid var(--glass-border);
 }
 
-.privacy-content {
+.feature-section:nth-of-type(even) {
+  background: var(--bg-darker);
+}
+
+.feature-content {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -250,30 +254,34 @@ body {
   gap: 6rem;
 }
 
-.privacy-text {
+.feature-content.reversed {
+  flex-direction: row-reverse;
+}
+
+.feature-text {
   flex: 1;
 }
 
-.privacy-text h2 {
+.feature-text h2 {
   font-size: 3.5rem;
   line-height: 1.1;
   margin-bottom: 2rem;
   font-weight: 900;
 }
 
-.privacy-text p {
+.feature-text p {
   font-size: 1.1rem;
   color: var(--text-dim);
   line-height: 1.8;
   margin-bottom: 2rem;
 }
 
-.privacy-visual {
+.feature-visual {
   flex: 1;
   position: relative;
 }
 
-.privacy-image-container {
+.feature-image-container {
   width: 100%;
   border-radius: 2rem;
   overflow: hidden;
@@ -281,10 +289,25 @@ body {
   box-shadow: 0 0 40px rgba(34, 211, 238, 0.1);
 }
 
-.privacy-image-container img {
+.feature-image-container img {
   width: 100%;
   display: block;
 }
+
+@media (max-width: 1024px) {
+
+  .feature-content,
+  .feature-content.reversed {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .feature-text h2 {
+    font-size: 2.5rem;
+  }
+}
+
 
 .request-access {
   padding: 10rem 4rem;

@@ -9,13 +9,26 @@ import {
   Github,
   Lock,
   Server,
-  Mail
+  Mail,
+  Zap,
+  Download,
+  PieChart,
+  BarChart,
+  Bot
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './index.css';
 import logoImg from './assets/logo.png';
 import heroImg from './assets/hero.png';
-import privacyImg from './assets/privacy.png';
+// Placeholder images for feature sections
+const privacyImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Privacy+First";
+const aggregatorsImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Aggregator+Integrations";
+const googleSheetsImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Google+Sheets+CSV";
+const equityImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Equity+and+RSUs";
+const taxesImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Smart+Tax+Calculations";
+const simulationsImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=What-if+Simulations";
+const aiAdvisorImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=AI+Financial+Advisor";
+const reportingImg = "https://placehold.co/1200x800/1e293b/22d3ee?text=Rich+Reporting";
 
 const Navbar = () => (
   <nav className="navbar">
@@ -26,26 +39,39 @@ const Navbar = () => (
     <div className="nav-links">
       <a href="#features">Features</a>
       <a href="#privacy">Data Privacy</a>
-      <a href="#request-access">Request Access</a>
       <button className="btn-primary" onClick={() => window.location.href = '#request-access'}>Request Access</button>
     </div>
   </nav>
 );
 
-const FeatureCard = ({ icon: Icon, title, description, highlight }) => (
-  <motion.div
-    className={`feature-card ${highlight ? 'tax-highlight' : ''}`}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5 }}
-  >
-    <div className="feature-icon">
-      <Icon size={24} />
+const FeatureSection = ({ id, tag, title, description, image, reversed, children }) => (
+  <section id={id} className="feature-section">
+    <div className={`feature-content ${reversed ? 'reversed' : ''}`}>
+      <motion.div
+        className="feature-text"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <span className="section-tag">{tag}</span>
+        <h2>{title}</h2>
+        <div className="feature-description">
+          {description}
+        </div>
+        {children}
+      </motion.div>
+      <motion.div
+        className="feature-visual"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+      >
+        <div className="feature-image-container">
+          <img src={image} alt={title} />
+        </div>
+      </motion.div>
     </div>
-    <h3>{title}</h3>
-    <p>{description}</p>
-  </motion.div>
+  </section>
 );
 
 const ADMIN_EMAIL = 'admin@lunemoney.com'; // TODO: Update with your preferred contact email
@@ -71,9 +97,9 @@ function App() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1>Your Finances, <span className="highlight">Mastered.</span></h1>
+          <h1>Your Finances, <span className="highlight">Your Data.</span></h1>
           <p>
-            The all-in-one platform for tracking net worth, equity, and future projections with AI-powered insights.
+            The private platform for tracking your money.
           </p>
           <div style={{ display: 'flex', gap: '1rem' }}>
             <button className="btn-primary"
@@ -81,21 +107,6 @@ function App() {
               onClick={() => window.location.href = '#request-access'}
             >
               Get Started for Free
-            </button>
-            <button
-              onClick={() => window.open('https://github.com/besjet17/LuneMoney', '_blank')}
-              style={{
-                background: 'transparent',
-                color: 'white',
-                border: '1px solid var(--glass-border)',
-                padding: '0.8rem 2rem',
-                borderRadius: '9999px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}>
-              <Github size={18} /> View on GitHub
             </button>
           </div>
         </motion.div>
@@ -112,84 +123,86 @@ function App() {
         </motion.div>
       </header>
 
-      <section id="features" className="features">
-        <span className="section-tag">Features</span>
-        <h2>Built for the next generation of investors.</h2>
-
-        <div className="features-grid">
-          <FeatureCard
-            icon={ShieldCheck}
-            title="Plaid Integration"
-            description="Securely sync with 12,000+ financial institutions. Your data is encrypted and protected."
-          />
-          <FeatureCard
-            icon={TrendingUp}
-            title="Equity & RSUs"
-            description="Specialized tracking for stock grants, options, and complex holdings often missed by other apps."
-          />
-          <FeatureCard
-            icon={Calculator}
-            title="Smart Tax Calculations"
-            description="High-precision tax estimation and optimization. Plan your exits and sales with confidence."
-            highlight
-          />
-          <FeatureCard
-            icon={Layers}
-            title="What-if Simulations"
-            description="Project your financial future. Model house purchases, career changes, or market crashes."
-          />
-          <FeatureCard
-            icon={Sparkles}
-            title="AI Financial Advisor"
-            description="Personalized insights driven by your actual spending habits. Optimize your cash flow instantly."
-          />
-          <FeatureCard
-            icon={ArrowRight}
-            title="And much more..."
-            description="Custom labels, multi-user support, real-time analytics, and automated rules."
-          />
-        </div>
-      </section>
-
-      <section id="privacy" className="privacy-section">
-        <div className="privacy-content">
-          <motion.div
-            className="privacy-text"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="section-tag">Privacy First</span>
-            <h2>Your Data. <span className="highlight">Your Infrastructure.</span></h2>
-            <p>
+      <section id="features">
+        <FeatureSection
+          id="privacy"
+          tag="Privacy First"
+          title={<>Your Data. <span className="highlight">Your Infrastructure.</span></>}
+          description={
+            <>
               Lune Money is the only financial tracking platform designed to be <strong>100% self-hosted</strong>.
               While other apps store your sensitive financial history on their servers, Lune Money runs entirely
               on your own hardware.
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-              <div>
-                <div style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><Server size={24} /></div>
-                <h4 style={{ margin: '0 0 0.5rem' }}>No External Servers</h4>
-                <p style={{ fontSize: '0.9rem', margin: 0 }}>Your data never leaves your home network. Complete isolation from data breaches.</p>
-              </div>
-              <div>
-                <div style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><Lock size={24} /></div>
-                <h4 style={{ margin: '0 0 0.5rem' }}>Open Source</h4>
-                <p style={{ fontSize: '0.9rem', margin: 0 }}>Transparent codebase. Verify every line of code to ensure your privacy is never compromised.</p>
-              </div>
+            </>
+          }
+          image={privacyImg}
+        >
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '2rem' }}>
+            <div>
+              <div style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><Server size={24} /></div>
+              <h4 style={{ margin: '0 0 0.5rem' }}>No External Servers</h4>
+              <p style={{ fontSize: '0.9rem', margin: 0 }}>Your data never leaves your home network. Complete isolation from data breaches.</p>
             </div>
-          </motion.div>
-          <motion.div
-            className="privacy-visual"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <div className="privacy-image-container">
-              <img src={privacyImg} alt="Data Privacy Visualization" />
+            <div>
+              <div style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><Lock size={24} /></div>
+              <h4 style={{ margin: '0 0 0.5rem' }}>Open Source</h4>
+              <p style={{ fontSize: '0.9rem', margin: 0 }}>Transparent codebase. Verify every line of code to ensure your privacy is never compromised.</p>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </FeatureSection>
+
+        <FeatureSection
+          tag="Integrations"
+          title="12,000+ Financial Institutions."
+          description="Connect all your accounts in one place. Secure, real-time sync with Plaid, Yodlee, and Mastercard."
+          image={aggregatorsImg}
+          reversed
+        />
+
+        <FeatureSection
+          tag="Import"
+          title="Import with Ease."
+          description="Prefer spreadsheets? Import your data via CSV or sync directly with Google Sheets. Total flexibility for your financial history."
+          image={googleSheetsImg}
+        />
+
+        <FeatureSection
+          tag="Net Worth"
+          title="Manage Every Asset."
+          description="Track RSUs, stock options, and private equity alongside your liquid assets. Get a complete picture of your total net worth."
+          image={equityImg}
+          reversed
+        />
+
+        <FeatureSection
+          tag="Tax Planning"
+          title="Plan for the Future."
+          description="Smart tax estimation helps you understand your liability before you sell. Optimize for long-term gains and minimize surprises."
+          image={taxesImg}
+        />
+
+        <FeatureSection
+          tag="Projections"
+          title="Visualize Every Scenario."
+          description="Model complex 'what-if' scenarios. See how a house purchase, career change, or market downturn affects your long-term success."
+          image={simulationsImg}
+          reversed
+        />
+
+        <FeatureSection
+          tag="AI Advisor"
+          title="Your Personal CFO."
+          description="Get proactive insights and recommendations based on your actual data. Optimize spending, identify savings, and grow your wealth faster."
+          image={aiAdvisorImg}
+        />
+
+        <FeatureSection
+          tag="Reporting"
+          title="Deep Insights."
+          description="Beautiful, interactive reports for income, expenses, and cash flow. Drill down into every transaction and see where your money goes."
+          image={reportingImg}
+          reversed
+        />
       </section>
 
       <section id="request-access" className="request-access">
@@ -225,11 +238,6 @@ function App() {
 
       <footer className="footer">
         <p>&copy; 2026 Lune Money. All rights reserved.</p>
-        <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center', gap: '2rem' }}>
-          <a href="#" style={{ color: 'var(--text-dim)', textDecoration: 'none' }}>Privacy Policy</a>
-          <a href="#" style={{ color: 'var(--text-dim)', textDecoration: 'none' }}>Terms of Service</a>
-          <a href="#" style={{ color: 'var(--text-dim)', textDecoration: 'none' }}>Documentation</a>
-        </div>
       </footer>
     </div>
   );
