@@ -37,8 +37,14 @@ const Navbar = () => (
       <span>LUNE MONEY</span>
     </div>
     <div className="nav-links">
-      <a href="#features">Features</a>
-      <a href="#privacy">Data Privacy</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#import">Import</a>
+      <a href="#net-worth">Net Worth</a>
+      <a href="#taxes">Taxes</a>
+      <a href="#projections">Projections</a>
+      <a href="#ai-advisor">AI Advisor</a>
+      <a href="#reporting">Reporting</a>
       <button className="btn-primary" onClick={() => window.location.href = '#request-access'}>Request Access</button>
     </div>
   </nav>
@@ -152,6 +158,7 @@ function App() {
         </FeatureSection>
 
         <FeatureSection
+          id="integrations"
           tag="Integrations"
           title="12,000+ Financial Institutions."
           description="Connect all your accounts in one place. Secure, real-time sync with Plaid, Yodlee, and Mastercard."
@@ -160,6 +167,7 @@ function App() {
         />
 
         <FeatureSection
+          id="import"
           tag="Import"
           title="Import with Ease."
           description="Prefer spreadsheets? Import your data via CSV or sync directly with Google Sheets. Total flexibility for your financial history."
@@ -167,6 +175,7 @@ function App() {
         />
 
         <FeatureSection
+          id="net-worth"
           tag="Net Worth"
           title="Manage Every Asset."
           description="Track RSUs, stock options, and private equity alongside your liquid assets. Get a complete picture of your total net worth."
@@ -175,6 +184,7 @@ function App() {
         />
 
         <FeatureSection
+          id="taxes"
           tag="Tax Planning"
           title="Plan for the Future."
           description="Smart tax estimation helps you understand your liability before you sell. Optimize for long-term gains and minimize surprises."
@@ -182,6 +192,7 @@ function App() {
         />
 
         <FeatureSection
+          id="projections"
           tag="Projections"
           title="Visualize Every Scenario."
           description="Model complex 'what-if' scenarios. See how a house purchase, career change, or market downturn affects your long-term success."
@@ -190,6 +201,7 @@ function App() {
         />
 
         <FeatureSection
+          id="ai-advisor"
           tag="AI Advisor"
           title="Your Personal CFO."
           description="Get proactive insights and recommendations based on your actual data. Optimize spending, identify savings, and grow your wealth faster."
@@ -197,6 +209,7 @@ function App() {
         />
 
         <FeatureSection
+          id="reporting"
           tag="Reporting"
           title="Deep Insights."
           description="Beautiful, interactive reports for income, expenses, and cash flow. Drill down into every transaction and see where your money goes."
