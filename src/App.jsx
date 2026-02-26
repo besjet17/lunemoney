@@ -76,7 +76,7 @@ const FeatureSection = ({ id, tag, title, description, image, reversed, imageCen
   </section>
 );
 
-const ADMIN_EMAIL = 'access-request@lunemoney.com'; 
+const ADMIN_EMAIL = 'access-request@lunemoney.com';
 
 function App() {
   const [formData, setFormData] = useState({ name: '', message: '' });
@@ -120,7 +120,7 @@ function App() {
             style={{ padding: '0.8rem 2rem', fontSize: '1rem' }}
             onClick={() => window.location.href = '#request-access'}
           >
-            Get Started for Free
+            Request Github Access
           </button>
         </div>
       </FeatureSection>
